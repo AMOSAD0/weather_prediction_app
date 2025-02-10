@@ -23,7 +23,7 @@ class PublicButton extends StatelessWidget {
     this.titleSize,
     required this.title,
     this.width,
-    this.borderRadius=12,
+    this.borderRadius=30,
     this.titleColor = Colors.white,
     this.backgroundColor = AppColors.blueColor,
     this.icon = "",
