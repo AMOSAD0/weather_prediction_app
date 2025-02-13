@@ -10,8 +10,6 @@ import 'package:weather_prediction_app/features/splash/ui/splaah_screen.dart';
 
 class AppRouter {
   Route onGenerateRoute(RouteSettings settings) {
-
-
     switch (settings.name) {
       case Routes.splash:
         return MaterialPageRoute(builder: (_) => SplaahScreen());

@@ -21,6 +21,7 @@ class WeatherApp extends StatelessWidget {
       initialRoute: Routes.splash,
       onGenerateRoute: appRouter.onGenerateRoute,
       
+      
       ),
     );
   }

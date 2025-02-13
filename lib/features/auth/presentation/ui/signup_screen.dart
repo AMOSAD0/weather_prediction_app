@@ -62,7 +62,7 @@ class SignupScreen extends StatelessWidget {
                       color: Colors.green,
                     ),
                     // Todo : replace text content with the home screen
-                    content: Center(child: Text("Welcome, ${state.user.displayName}!")),
+                    content: Text("Welcome, ${state.user.displayName}!",textAlign: TextAlign.center,),
                   ),);
               }
             },
