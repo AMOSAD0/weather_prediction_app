@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:weather_prediction_app/features/signup/data/error_handler/auth_exceptions.dart';
+import 'package:weather_prediction_app/features/auth/data/error_handler/auth_exceptions.dart';
 abstract class AuthRemoteDataSource {
   Future<User?> signUp(String fullName,String email, String password);
+  Future<User?> login(String email, String password);
 }
 
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
@@ -25,7 +26,26 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       }
       return user;
     } on FirebaseAuthException catch (e) {
+      print(e);
       throw Exception(AuthExceptionHandler.handleException(e.code));
     }
   }
+  
+  @override
+  Future<User?> login(String email, String password)async {
+    try {
+      final userCredential = await firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      throw Exception(AuthExceptionHandler.handleException(e.code));
+    }
+  
+  }
+  
+ 
+
+  
 }

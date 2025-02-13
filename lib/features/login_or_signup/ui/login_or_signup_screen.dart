@@ -39,7 +39,9 @@ class LoginOrSignupScreen extends StatelessWidget {
                   PublicButton(
                     title: AppStrings.login,
                     style: AppStyles.font20WhiteBold,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.login);
+                    },
                   ),
                 ],
               ),

@@ -8,17 +8,16 @@ import 'package:weather_prediction_app/core/theming/color_manger.dart';
 import 'package:weather_prediction_app/core/theming/text_style_manger.dart';
 import 'package:weather_prediction_app/core/widgets/public_button.dart';
 import 'package:weather_prediction_app/core/widgets/public_text_form_field.dart';
-import 'package:weather_prediction_app/features/signup/bloc/auth_bloc.dart';
-import 'package:weather_prediction_app/features/signup/bloc/auth_event.dart';
-import 'package:weather_prediction_app/features/signup/bloc/auth_state.dart';
-import 'package:weather_prediction_app/features/signup/ui/widgets/title_signup.dart';
+import 'package:weather_prediction_app/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:weather_prediction_app/features/auth/presentation/bloc/auth_event.dart';
+import 'package:weather_prediction_app/features/auth/presentation/bloc/auth_state.dart';
+import 'package:weather_prediction_app/features/auth/presentation/ui/widgets/title_login.dart';
 
-class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController fullnameController = TextEditingController();
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     final formKey = GlobalKey<FormState>();
@@ -41,28 +40,30 @@ class SignupScreen extends StatelessWidget {
               } else if (state is AuthFailure) {
                 //show error
                 Navigator.of(context).pop();
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  icon: const Icon(
-                    Icons.error_outline,
-                    color: Colors.red,
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    icon: const Icon(
+                      Icons.error_outline,
+                      color: Colors.red,
+                    ),
+                    content: Text(state.message),
                   ),
-                  content: Text(state.message),
-                ),
-              );
+                );
               } else if (state is AuthSuccess) {
                 //navigate to home
                 Navigator.of(context).pop();
                 showDialog(
                   context: context,
-                  builder:  (context) => AlertDialog(
+                  builder: (context) => AlertDialog(
                     icon: const Icon(
                       Icons.check_circle_outline,
                       color: Colors.green,
                     ),
-                    content: Text("Welcome, ${state.user.displayName}!"),
-                  ),);
+                    // Todo : replace text content with the home screen
+                    content: Text("Welcome, ${state.user.displayName}!",textAlign: TextAlign.center,),
+                  ),
+                );
               }
             },
             builder: (context, state) => SingleChildScrollView(
@@ -72,24 +73,9 @@ class SignupScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     verticalSpace(80),
-                    TitleSignup(),
+                    TitleLogin(),
                     verticalSpace(24),
 
-                    //fullname
-                    PublicTextFormField(
-                      label: AppStrings.fullname,
-                      hint: AppStrings.fullname,
-                      controller: fullnameController,
-                      validator: (value) {
-                        // ignore: unnecessary_null_comparison
-                        if (value!.isEmpty || value == null) {
-                          return AppStrings.pleaseEnterYourFullname;
-                        } else if (value.length < 4) {
-                          return AppStrings.fullnamwMustBeAtLeast4Characters;
-                        }
-                        return null;
-                      },
-                    ),
                     //email
                     PublicTextFormField(
                       label: AppStrings.email,
@@ -109,6 +95,8 @@ class SignupScreen extends StatelessWidget {
                     PublicTextFormField(
                       label: AppStrings.password,
                       hint: AppStrings.password,
+                      isPassword: true,
+                      showSuffixIcon: true,
                       controller: passwordController,
                       validator: (value) {
                         // ignore: unnecessary_null_comparison
@@ -122,21 +110,21 @@ class SignupScreen extends StatelessWidget {
                     ),
 
                     verticalSpace(30),
+
                     PublicButton(
-                      title: AppStrings.signup,
+                      title: AppStrings.login,
                       style: AppStyles.font20WhiteBold,
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           context.read<AuthBloc>().add(
-                                SignUpEvent(
-                                  fullName: fullnameController.text,
+                                LoginEvent(
                                   email:emailController.text.trim(),
                                   password: passwordController.text,
                                 ),
                               );
                         }
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
