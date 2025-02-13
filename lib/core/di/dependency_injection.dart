@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
-import 'package:weather_prediction_app/features/signup/bloc/auth_bloc.dart';
-import 'package:weather_prediction_app/features/signup/data/data_source/auth_remote_data_source.dart';
-import 'package:weather_prediction_app/features/signup/data/repoditories/auth_repository_impl.dart';
-import 'package:weather_prediction_app/features/signup/domin/repositories/auth_repositories.dart';
-import 'package:weather_prediction_app/features/signup/domin/use_case/auth_use_case.dart';
+import 'package:weather_prediction_app/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:weather_prediction_app/features/auth/data/data_source/auth_remote_data_source.dart';
+import 'package:weather_prediction_app/features/auth/data/repoditories/auth_repository_impl.dart';
+import 'package:weather_prediction_app/features/auth/domin/repositories/auth_repositories.dart';
+import 'package:weather_prediction_app/features/auth/domin/use_case/auth_use_case.dart';
 
 final getIt = GetIt.instance;
 
