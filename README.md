@@ -27,8 +27,3 @@ Make sure you have the following installed:
 - ✅ Dart (`>=2.x.x`)
 - ✅ Firebase CLI & setup configured
 
-## 🛠️ Installation & Usage
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/firebase_auth_clean_arch.git
-   cd firebase_auth_clean_arch
