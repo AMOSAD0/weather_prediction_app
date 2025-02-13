@@ -27,29 +27,4 @@ Make sure you have the following installed:
 - ✅ Dart (`>=2.x.x`)
 - ✅ Firebase CLI & setup configured
 
-## 📂 Project Structure
-lib/
-│── core/
-│   ├── errors/          # Error handling
-│   ├── usecases/        # Base use case classes
-│
-│── features/auth/
-│   ├── data/
-│   │   ├── datasources/  # Firebase API calls
-│   │   ├── models/       # Data models
-│   │   ├── repositories/ # Repository implementation
-│   │
-│   ├── domain/
-│   │   ├── entities/     # Core business models
-│   │   ├── repositories/ # Abstract repository
-│   │   ├── usecases/     # Business logic
-│   │
-│   ├── presentation/
-│       ├── bloc/        # BLoC logic
-│       ├── screens/     # UI screens
-│
-│── injection_container.dart  # Dependency Injection
-│── main.dart                 # App entry point
-
-
 
