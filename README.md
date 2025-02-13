@@ -3,8 +3,8 @@
 A Flutter project implementing Firebase authentication using **Clean Architecture**, **Bloc**, and **FirebaseAuth**.
 
 ## 📸 Screenshots
-![Login Screen](screenshots/login.png)
-![Signup Screen](screenshots/signup.png)
+![Login Screen](screenshots/LogIn.gif)
+![Signup Screen](screenshots/SignUp.gif)
 
 ## 📜 Description
 This project demonstrates how to integrate Firebase Authentication in a Flutter app using **Clean Architecture** principles. It supports:
