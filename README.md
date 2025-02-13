@@ -1,16 +1,30 @@
-# weather_prediction_app
+# 🚀  Weather Presiction App
 
-A new Flutter project.
+A Flutter project implementing Firebase authentication using **Clean Architecture**, **Bloc**, and **FirebaseAuth**.
 
-## Getting Started
+## 📸 Screenshots
+![Login Screen](screenshots/login.png)
+![Signup Screen](screenshots/signup.png)
 
-This project is a starting point for a Flutter application.
+## 📜 Description
+This project demonstrates how to integrate Firebase Authentication in a Flutter app using **Clean Architecture** principles. It supports:
+- 📧 Email/Password Signup & Login
+- 🎨 Clean Architecture Implementation
+- 🔐 Firebase Authentication Error Handling
+- 🧩 Dependency Injection with `GetIt`
+- 🏗️ `Bloc` State Management
 
-A few resources to get you started if this is your first Flutter project:
+## 📚 Tech Stack
+- Flutter 🐦
+- Dart 🎯
+- Firebase Auth 🔥
+- BLoC (flutter_bloc) 🔄
+- GetIt (Dependency Injection) 💉
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🚀 Prerequisites
+Make sure you have the following installed:
+- ✅ Flutter SDK (`>=3.x.x`)
+- ✅ Dart (`>=2.x.x`)
+- ✅ Firebase CLI & setup configured
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
