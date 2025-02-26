@@ -7,15 +7,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthUseCase authUseCase;
 
   AuthBloc(this.authUseCase) : super(AuthInitial()) {
-    on<SignUpEvent>((event, emit) async {
-      emit(AuthLoading());
-      try {
-        final user = await authUseCase.signUp(event.fullName,event.email, event.password);
-        emit(AuthSuccess(user: user!));
-      } catch (e) {
-        emit(AuthFailure(message: e.toString().replaceFirst("Exception: ", "")));
-      }
-    },);
+ 
+
+    on<SignUpEvent>(
+      (event, emit) async {
+        emit(AuthLoading());
+        try {
+          final user = await authUseCase.signUp(
+              event.fullName, event.email, event.password);
+          emit(AuthSuccess(user: user!));
+        } catch (e) {
+          emit(AuthFailure(
+              message: e.toString().replaceFirst("Exception: ", "")));
+        }
+      },
+    );
 
     on<LoginEvent>((event, emit) async {
       emit(AuthLoading());
@@ -23,8 +29,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final user = await authUseCase.login(event.email, event.password);
         emit(AuthSuccess(user: user!));
       } catch (e) {
-        emit(AuthFailure(message: e.toString().replaceFirst("Exception: ", "")));
+        emit(
+            AuthFailure(message: e.toString().replaceFirst("Exception: ", "")));
       }
     });
   }
+
+
 }

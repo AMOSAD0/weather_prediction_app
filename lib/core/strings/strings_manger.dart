@@ -12,5 +12,6 @@ class AppStrings {
   static const String pleaseEnterValidEmail = "Please enter a valid email";
   static const String pleaseEnterYourPassword = "Please enter your password";
   static const String passwordMustBeAtLeast8Characters = "Password must be at least 8 characters";
+  static const String hello = "Hello";
 
 }
