@@ -5,7 +5,7 @@ import 'package:weather_prediction_app/core/theming/color_manger.dart';
 class AppStyles {
 
 static TextStyle font60WhiteExtiraBold = TextStyle(
-    fontSize: 60.sp,
+    fontSize: 40.sp,
     color: AppColors.whiteColor,
     fontWeight: FontWeight.w900,
   );
@@ -18,6 +18,11 @@ static TextStyle font60WhiteExtiraBold = TextStyle(
 
   static TextStyle font20WhiteBold = TextStyle(
     fontSize: 20.sp,
+    color: AppColors.whiteColor,
+    fontWeight: FontWeight.bold,
+  );
+  static TextStyle font17WhiteBold = TextStyle(
+    fontSize: 17.sp,
     color: AppColors.whiteColor,
     fontWeight: FontWeight.bold,
   );

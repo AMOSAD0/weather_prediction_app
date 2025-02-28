@@ -3,7 +3,8 @@ import 'package:weather_prediction_app/core/strings/strings_manger.dart';
 import 'package:weather_prediction_app/core/theming/text_style_manger.dart';
 
 class HelloAndNameText extends StatelessWidget {
-  const HelloAndNameText({super.key});
+  final String name ;
+  const HelloAndNameText({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class HelloAndNameText extends StatelessWidget {
               AppStrings.hello,
               style: AppStyles.font30BlueBold,
             ),
-            Text("name",
+            Text(name,
               style: AppStyles.font20BlueBold
             ),
       ],

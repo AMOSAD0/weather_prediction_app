@@ -16,8 +16,8 @@ class ForecastModel {
 class WeatherModel {
   final String? date;
   final double? avgTempC;
-  final double? avgHumidity;
-  final double? daily_will_it_rain;
+  final int? avgHumidity;
+  final int? daily_will_it_rain;
   final String? condition;
   final double? uv;
 

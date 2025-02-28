@@ -4,7 +4,9 @@ import 'package:weather_prediction_app/core/theming/color_manger.dart';
 import 'package:weather_prediction_app/core/theming/text_style_manger.dart';
 
 class DayContainer extends StatelessWidget {
-  const DayContainer({super.key});
+  final String day;
+  final String dateDay;
+  const DayContainer({super.key,required this.day, required this.dateDay});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +23,11 @@ class DayContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              "Fri",
+              day,
               style: AppStyles.font16BlueBold,
             ),
             Text(
-              "21",
+              dateDay,
               style: AppStyles.font16BlueBold,
             )
           ],
@@ -35,4 +37,4 @@ class DayContainer extends StatelessWidget {
   }
 }
 
-List listDays=["Fri","Sat","Sun"];
+

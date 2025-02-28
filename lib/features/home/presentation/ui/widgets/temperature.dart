@@ -4,7 +4,8 @@ import 'package:weather_prediction_app/core/theming/color_manger.dart';
 import 'package:weather_prediction_app/core/theming/text_style_manger.dart';
 
 class Temperature extends StatelessWidget {
-  const Temperature({super.key});
+  final String temp;
+  const Temperature({super.key,required this.temp});
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +16,15 @@ class Temperature extends StatelessWidget {
                   children: [
                     Positioned(
                       top: 20.h,
-                      right: 20.w,
+                      right: 10.w,
                       child: Text(" \u2103",
                       style: AppStyles.font40WhiteBold,
                       ),
                     ),
                     Positioned(
-                     top: 30.h,
-                      left: 25.w,
-                      child: Text("11",
+                     top: 40.h,
+                      left: 20.w,
+                      child: Text(temp,
                       style: AppStyles.font60WhiteExtiraBold,
                       ),
                     ),

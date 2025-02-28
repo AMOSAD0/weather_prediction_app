@@ -13,5 +13,6 @@ class AppStrings {
   static const String pleaseEnterYourPassword = "Please enter your password";
   static const String passwordMustBeAtLeast8Characters = "Password must be at least 8 characters";
   static const String hello = "Hello";
+  static const String isTheWeatherIsGood ="Is the weather good to go out?";
 
 }

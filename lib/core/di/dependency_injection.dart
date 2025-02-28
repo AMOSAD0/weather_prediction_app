@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -9,6 +10,12 @@ import 'package:weather_prediction_app/features/auth/data/repoditories/auth_repo
 import 'package:weather_prediction_app/features/auth/domin/repositories/auth_repositories.dart';
 import 'package:weather_prediction_app/features/auth/domin/use_case/auth_use_case.dart';
 import 'package:weather_prediction_app/features/auth/presentation/cubit_local_data/local_data_cubit.dart';
+import 'package:weather_prediction_app/features/home/data/data_source/api_factory.dart';
+import 'package:weather_prediction_app/features/home/data/data_source/api_service.dart';
+import 'package:weather_prediction_app/features/home/data/repo/api_repository_impl.dart';
+import 'package:weather_prediction_app/features/home/domin/repositories/api_repositories.dart';
+import 'package:weather_prediction_app/features/home/domin/use_case/api_use_case.dart';
+import 'package:weather_prediction_app/features/home/presentation/ui/cubit/api_cubit.dart';
 import 'package:weather_prediction_app/features/location/bloc/location_bloc.dart';
 import 'package:weather_prediction_app/features/location/data/location_datasource.dart';
 import 'package:weather_prediction_app/features/location/data/location_local_data.dart';
@@ -22,7 +29,11 @@ Future<void> setupGetIt() async {
   // Firebase
   getIt.registerLazySingleton(() => FirebaseAuth.instance);
 
-  //
+  // Api
+  Dio dio = DioFactory.getDio();
+  getIt.registerLazySingleton<ApiService>(
+    () => ApiService(dio: dio),
+  );
 
   //Hive
   await Hive.initFlutter();
@@ -48,7 +59,11 @@ Future<void> setupGetIt() async {
         authRemoteDataSource: getIt(), authLocalDataSource: getIt()),
   );
   getIt.registerLazySingleton<LocationRepository>(
-    () => LocationRepositoryImpl(dataSource: getIt(),localData: getIt()),
+    () => LocationRepositoryImpl(dataSource: getIt(), localData: getIt()),
+  );
+
+  getIt.registerLazySingleton<ApiRepositories>(
+    () => ApiRepositoryImpl(apiService: getIt()),
   );
 
   //use case
@@ -56,9 +71,15 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton(
     () => GetLocationUsecase(getIt()),
   );
+  getIt.registerLazySingleton(
+    () => ApiUseCase(repositories: getIt()),
+  );
 
   //Bloc
   getIt.registerFactory(() => AuthBloc(getIt()));
   getIt.registerFactory(() => LocationBloc(getIt()));
-  getIt.registerFactory(() => LocalDataCubit(getIt()),);
+  getIt.registerFactory(
+    () => LocalDataCubit(getIt()),
+  );
+  getIt.registerFactory(() =>ApiCubit(getIt()) ,);
 }

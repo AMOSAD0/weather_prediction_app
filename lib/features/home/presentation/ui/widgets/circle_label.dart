@@ -4,7 +4,9 @@ import 'package:weather_prediction_app/core/theming/color_manger.dart';
 import 'package:weather_prediction_app/core/theming/text_style_manger.dart';
 
 class CircleLabel extends StatelessWidget {
-  const CircleLabel({super.key});
+  final String value;
+  final String label;
+  const CircleLabel({super.key, required this.value, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +16,12 @@ class CircleLabel extends StatelessWidget {
           radius: 35.r,
           backgroundColor: AppColors.blueColor,
           child: Text(
-            "11",
+            value,
             style: AppStyles.font30WhiteBold,
           ),
         ),
         Text(
-          "data",
+          label,
           style: AppStyles.font20BlueBold,
         ),
       ],
