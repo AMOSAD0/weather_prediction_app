@@ -9,7 +9,8 @@ import 'package:weather_prediction_app/core/widgets/public_button.dart';
 import 'package:weather_prediction_app/features/auth/data/model/user_model.dart';
 import 'package:weather_prediction_app/features/auth/presentation/cubit_local_data/local_data_cubit.dart';
 import 'package:weather_prediction_app/features/home/data/model/weather_model.dart';
-import 'package:weather_prediction_app/features/home/presentation/ui/cubit/api_cubit.dart';
+import 'package:weather_prediction_app/features/home/presentation/cubit/ai_model_cubit.dart';
+import 'package:weather_prediction_app/features/home/presentation/cubit/api_cubit.dart';
 import 'package:weather_prediction_app/features/home/presentation/ui/widgets/circle_label.dart';
 import 'package:weather_prediction_app/features/home/presentation/ui/widgets/day_container.dart';
 import 'package:weather_prediction_app/features/home/presentation/ui/widgets/days_dates.dart';
@@ -127,8 +128,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   PublicButton(
                     title: AppStrings.isTheWeatherIsGood,
                     style: AppStyles.font17WhiteBold,
-                    onPressed: () {
-                      
+                    onPressed: () async {
+                      if (list![index] != null) {
+                        int? i = await context
+                            .read<AiModelCubit>()
+                            .getPrediction(list![index]);
+                        if (i == 1) {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              icon: const Icon(
+                                Icons.check_circle_outline,
+                                color: Colors.green,
+                              ),
+                              // Todo : replace text content with the home screen
+                              content: Text(
+                                AppStrings.weatherGood,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          );
+                        } else if (i == 0) {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              icon: const Icon(
+                                Icons.warning_amber_outlined,
+                                color: Colors.red,
+                              ),
+                              content: Text(
+                                AppStrings.weatherBad,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          );
+                        }
+                      }
                     },
                   )
                 ],

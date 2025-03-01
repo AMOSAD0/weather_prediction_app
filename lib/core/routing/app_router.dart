@@ -4,7 +4,8 @@ import 'package:weather_prediction_app/core/di/dependency_injection.dart';
 import 'package:weather_prediction_app/core/routing/routes.dart';
 import 'package:weather_prediction_app/features/auth/presentation/cubit_local_data/local_data_cubit.dart';
 import 'package:weather_prediction_app/features/auth/presentation/ui/login_screen.dart';
-import 'package:weather_prediction_app/features/home/presentation/ui/cubit/api_cubit.dart';
+import 'package:weather_prediction_app/features/home/presentation/cubit/ai_model_cubit.dart';
+import 'package:weather_prediction_app/features/home/presentation/cubit/api_cubit.dart';
 import 'package:weather_prediction_app/features/home/presentation/ui/home_screen.dart';
 import 'package:weather_prediction_app/features/location/bloc/location_bloc.dart';
 import 'package:weather_prediction_app/features/login_or_signup/ui/login_or_signup_screen.dart';
@@ -45,6 +46,7 @@ class AppRouter {
                   BlocProvider(create: (context) => getIt<LocationBloc>(),),
                   BlocProvider(create: (context) => getIt<LocalDataCubit>(),),
                   BlocProvider(create: (context) => getIt<ApiCubit>(),),
+                  BlocProvider(create: (context) => getIt<AiModelCubit>(),)
                   ],
                 child: HomeScreen()));
       default:
