@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_prediction_app/core/helper/app_regex.dart';
 import 'package:weather_prediction_app/core/helper/spacing.dart';
+import 'package:weather_prediction_app/core/routing/routes.dart';
 import 'package:weather_prediction_app/core/strings/strings_manger.dart';
 import 'package:weather_prediction_app/core/theming/color_manger.dart';
 import 'package:weather_prediction_app/core/theming/text_style_manger.dart';
@@ -64,6 +65,7 @@ class LoginScreen extends StatelessWidget {
                     content: Text("Welcome, ${state.user.displayName}!",textAlign: TextAlign.center,),
                   ),
                 );
+                Navigator.pushNamedAndRemoveUntil(context, Routes.home, (route) => false);
               }
             },
             builder: (context, state) => SingleChildScrollView(

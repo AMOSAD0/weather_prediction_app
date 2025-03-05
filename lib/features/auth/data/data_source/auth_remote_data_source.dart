@@ -3,6 +3,7 @@ import 'package:weather_prediction_app/features/auth/data/error_handler/auth_exc
 abstract class AuthRemoteDataSource {
   Future<User?> signUp(String fullName,String email, String password);
   Future<User?> login(String email, String password);
+  Future<User?> getCurrentUserFromFirebase();
 }
 
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
@@ -18,7 +19,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
         password:password,
       );
       User? user = userCredential.user;
-
+      firebaseAuth.currentUser;
       if (user != null) {
         await user.updateDisplayName(fullName);
         await user.reload();
@@ -26,7 +27,6 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       }
       return user;
     } on FirebaseAuthException catch (e) {
-      print(e);
       throw Exception(AuthExceptionHandler.handleException(e.code));
     }
   }
@@ -43,6 +43,11 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       throw Exception(AuthExceptionHandler.handleException(e.code));
     }
   
+  }
+  
+  @override
+  Future<User?> getCurrentUserFromFirebase(){
+    return Future.value(firebaseAuth.currentUser);
   }
   
  

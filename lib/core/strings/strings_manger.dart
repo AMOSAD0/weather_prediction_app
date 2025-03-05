@@ -12,5 +12,9 @@ class AppStrings {
   static const String pleaseEnterValidEmail = "Please enter a valid email";
   static const String pleaseEnterYourPassword = "Please enter your password";
   static const String passwordMustBeAtLeast8Characters = "Password must be at least 8 characters";
+  static const String hello = "Hello";
+  static const String isTheWeatherIsGood ="Is the weather good to go out?";
+  static const String weatherGood ="The weather is good you can go out";
+  static const String weatherBad ="The weather is bad, I don't recommend you go out." ;
 
 }
